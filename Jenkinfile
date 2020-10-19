@@ -1,4 +1,4 @@
-node('docker') {
+node{
   stage('SCM') {
     checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: 'development']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/veeresh-ritu/gitjenkinintigration.git']]]
   }
