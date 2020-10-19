@@ -1,3 +1,33 @@
-node{
-  echo 'helloword'
+pipeline{
+agent any
+  stages{
+    states('compile stage'){
+	 steps{
+	 withmaven(maven :'mave _3_6_3')
+	  sh ' mvn clean compile'
+	}
+	
   }
+  }
+  
+  
+  stages{
+    states('testing stage'){
+	steps{
+	 withmaven(maven :'mave _3_6_3')
+	  sh ' mvn test'
+	}
+	}
+	
+  }
+  stages{
+    states('testing stage'){
+	steps{
+	 withmaven(maven :'mave _3_6_3')
+	  sh ' mvn deploy'
+	}
+	
+  }
+
+}
+}
